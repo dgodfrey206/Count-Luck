@@ -58,25 +58,25 @@ string makeGuess(vector<string> const& forest, int n, int m, node player, int k)
 
     // count number of valid adjacent nodes
     int count = 0;
-	for (auto const& v : arr) {
-	  if (isUnvisitedNode(v)) {
-	    // a '.' or '*' is a valid path
-		if (forest[v.x][v.y] == '.' || forest[v.x][v.y] == '*') {
-	      count++;
-		}
-		else {
-		  // if this node is invalid set as visited
-		  visited[v.x][v.y] = true;
-		}
-	  }
+    for (auto const& v : arr) {
+      if (isUnvisitedNode(v)) {
+        // a '.' or '*' is a valid path
+	if (forest[v.x][v.y] == '.' || forest[v.x][v.y] == '*') {
+          count++;
 	}
+	else {
+	  // if this node is invalid set as visited
+	  visited[v.x][v.y] = true;
+	}
+      }
+    }
 
-	for (auto& v : arr) {
-	  // if we counted more than 1 path then Hermonie waved her wand; increase count
-	  if (count >= 2) v.count++;
-	  // push onto the stack for the continuation of the search
-	  if (isUnvisitedNode(v)) s.push(v);
-	}
+    for (auto& v : arr) {
+      // if we counted more than 1 path then Hermonie waved her wand; increase count
+      if (count >= 2) v.count++;
+      // push onto the stack for the continuation of the search
+      if (isUnvisitedNode(v)) s.push(v);
+    }
   }
 
   // last.count holds the answer
