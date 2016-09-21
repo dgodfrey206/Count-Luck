@@ -42,18 +42,18 @@ string makeGuess(vector<string> const& forest, int n, int m, node player, int k)
 
     // if we have already visited or node is a tree
     if (!isUnvisitedNode(last) || forest[x][y] == 'X') continue;
-    // mark node as visited
-	visited[x][y] = true;
+      // mark node as visited
+      visited[x][y] = true;
 
-    // if we have found the answer then our search ends
-	if (forest[x][y] == '*') break;
+      // if we have found the answer then our search ends
+    if (forest[x][y] == '*') break;
 
     // hold a sequence of adjacent nodes to determine if more than 1 is a valid path
-	std::array<node, 4> arr = {{
-	  node(x, y - 1, last.count),
-	  node(x, y + 1, last.count),
-	  node(x - 1, y, last.count),
-	  node(x + 1, y, last.count)
+    std::array<node, 4> arr = {{
+      node(x, y - 1, last.count),
+      node(x, y + 1, last.count),
+      node(x - 1, y, last.count),
+      node(x + 1, y, last.count)
     }};
 
     // count number of valid adjacent nodes
